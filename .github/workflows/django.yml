@@ -25,12 +25,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-          - name: Set environment variables
-        env:
+    - name: Set environment variables
+      env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}  # Add your secret key to GitHub Secrets
-        run: |
-          echo "SECRET_KEY=${SECRET_KEY}" >> .env
-          cp .env your_project/settings/.env  # Adjust path as per your project structure
+      run: | 
+        echo "SECRET_KEY=${SECRET_KEY}" >> .env
+        cp .env your_project/settings/.env  # Adjust path as per your project structure
     - name: Run Tests
       run: |
         python django_project/manage.py test
